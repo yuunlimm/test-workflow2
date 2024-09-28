@@ -8,7 +8,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Trigger Repository Dispatch with Payload
+      - name: Set GH_TOKEN Environment Variable
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Set GH_TOKEN from GITHUB_TOKEN
         run: |
           gh api --method POST \
           -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
