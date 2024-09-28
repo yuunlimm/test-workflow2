@@ -1,0 +1,20 @@
+name: Dispatch Event Workflow
+
+on:
+  workflow_dispatch:  # Allows manual trigger from the GitHub Actions UI
+  push:  # or any other event to trigger this workflow
+    branches:
+      - main
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Repository Dispatch
+        uses: peter-evans/repository-dispatch@v3.0.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }} # or your custom PAT if necessary
+          repository: 'yuunlimm/test-workflow'   # Replace with your target repo (e.g., 'user/repository')
+          event-type: 'json-change-detected'    # The custom event type you're using in the target repo workflow
+          client-payload: '{"commit_hash" : "1234" }'  # Optional JSON payload
