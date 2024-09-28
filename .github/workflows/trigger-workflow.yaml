@@ -8,14 +8,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Get Mock Commit Hash
-        run: echo "COMMIT_HASH=mock-commit-hash" >> $GITHUB_ENV
-        # Mock a commit hash for testing
-
       - name: Set GH_TOKEN Environment Variable
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh api -X POST repos/yuunlimm/test-workflow/dispatches \
             -f event_type=json-change-detected \
-            -f client_payload='{"commit_hash":"${{ env.COMMIT_HASH }}"}'
+            -f client_payload='{"commit_hash":"random-hash"}'
