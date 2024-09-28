@@ -9,6 +9,8 @@ jobs:
 
     steps:
       - name: Trigger Repository Dispatch with Payload
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh api --method POST \
           -H "Accept: application/vnd.github+json" \
