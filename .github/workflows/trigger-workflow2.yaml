@@ -14,7 +14,7 @@ jobs:
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v3.0.0
         with:
-          token: ${{ secrets.GITHUB_TOKEN }} # or your custom PAT if necessary
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}  # Use PAT instead of GITHUB_TOKEN
           repository: 'yuunlimm/test-workflow'   # Replace with your target repo (e.g., 'user/repository')
           event-type: 'json-change-detected'    # The custom event type you're using in the target repo workflow
           client-payload: '{"commit_hash" : "1234" }'  # Optional JSON payload
