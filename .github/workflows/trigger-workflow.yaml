@@ -8,12 +8,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Set GH_TOKEN Environment Variable
+      - name: Trigger Repository Dispatch with Payload
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Set GH_TOKEN from GITHUB_TOKEN
+          GH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}  # Use PAT instead of GITHUB_TOKEN
         run: |
           gh api --method POST \
-          -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          -H "Authorization: token ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
           -H "Accept: application/vnd.github+json" \
           -H "X-GitHub-Api-Version: 2022-11-28" \
           /repos/yuunlimm/test-workflow/dispatches \
