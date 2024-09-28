@@ -12,11 +12,11 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}  # Use PAT instead of GITHUB_TOKEN
         run: |
-          gh api --method POST \
-          -H "Authorization: token ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
+          gh api \
+          --method POST \
           -H "Accept: application/vnd.github+json" \
           -H "X-GitHub-Api-Version: 2022-11-28" \
           /repos/yuunlimm/test-workflow/dispatches \
-          -f "event_type=json-change-detected" \
+          -f "event_type=trigger_workflow" \
           -F "client_payload[unit]=false" \
           -F "client_payload[integration]=true"
