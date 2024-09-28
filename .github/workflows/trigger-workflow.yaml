@@ -9,10 +9,9 @@ jobs:
 
     steps:
       - name: Trigger Repository Dispatch with Payload
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh api --method POST \
+          -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
           -H "Accept: application/vnd.github+json" \
           -H "X-GitHub-Api-Version: 2022-11-28" \
           /repos/yuunlimm/test-workflow/dispatches \
