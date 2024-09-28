@@ -1,6 +1,5 @@
 name: Trigger Test Workflow
 
-# This enables manual triggering via the GitHub Actions UI
 on:
   workflow_dispatch:  # Allows you to manually run this workflow from the Actions tab
 
@@ -11,11 +10,12 @@ jobs:
     steps:
       - name: Get Mock Commit Hash
         run: echo "COMMIT_HASH=mock-commit-hash" >> $GITHUB_ENV
-        # Here we're just mocking a commit hash as an example
+        # Mock a commit hash for testing
 
-      - name: Trigger Repository Dispatch
+      - name: Set GH_TOKEN Environment Variable
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh api -X POST repos/yuunlimm/test-workflow/dispatches \
             -f event_type=json-change-detected \
-            -f client_payload='{"commit_hash":"${{ env.COMMIT_HASH }}"}' \
-            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}"
+            -f client_payload='{"commit_hash":"${{ env.COMMIT_HASH }}"}'
