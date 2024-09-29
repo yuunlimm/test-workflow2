@@ -1,4 +1,4 @@
-name: Dispatch Event Workflow2
+name: Dispatch Event Workflow2 Json
 
 on:
   workflow_dispatch:  # Allows manual trigger from the GitHub Actions UI

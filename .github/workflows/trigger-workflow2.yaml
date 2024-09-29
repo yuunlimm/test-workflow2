@@ -2,9 +2,7 @@ name: Dispatch Event Workflow
 
 on:
   workflow_dispatch:  # Allows manual trigger from the GitHub Actions UI
-  push:  # or any other event to trigger this workflow
-    branches:
-      - main
+
 
 jobs:
   dispatch:

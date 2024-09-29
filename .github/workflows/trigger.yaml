@@ -1,6 +1,7 @@
 name: Dispatch Event to Processor Repo
 
 on:
+  workflow_dispatch:  # Allows manual trigger from the GitHub Actions UI
   push:
     paths:
       - 'jsons/**'  # Specify the path where JSON files are stored
