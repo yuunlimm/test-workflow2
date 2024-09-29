@@ -19,7 +19,7 @@ jobs:
       - name: Dispatch Event to Processor Repo
         uses: peter-evans/repository-dispatch@v3.0.0
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}  # Use a Personal Access Token (PAT) for private repos if needed
-          repository: 'yuunlimm/test-workflow'  # Target repo (e.g., your processor repo)
-          event-type: 'json-change-detected'
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}  # Use PAT instead of GITHUB_TOKEN
+          repository: 'yuunlimm/test-workflow'   # Replace with your target repo (e.g., 'user/repository')
+          event-type: 'json-change-detected'    # The custom event type you're using in the target repo workflow
           client-payload: '{"commit_hash": "${{ github.sha }}"}'  # Send the commit hash as payload
