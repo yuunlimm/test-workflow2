@@ -32,7 +32,7 @@ jobs:
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}  # Use PAT instead of GITHUB_TOKEN
           repo: test-workflow   # Replace with your target repo (e.g., 'user/repository')
           owner: yuunlimm
-          ref: main
+          ref: refs/heads/main
           workflow: integration-tests.yaml  # Name of the workflow file to trigger
           workflow_inputs: '{"commit_hash": "${{ github.sha }}"}'
 
